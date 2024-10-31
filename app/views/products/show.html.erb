@@ -1,0 +1,6 @@
+<h1><%= @product.title %></h1>
+<p><%= @product.description %></p>
+<span><%= @product.price %> $</span>
+
+<%= button_to "Añadir al Carrito", cart_add_path(product_id: @product.id), method: :post %>
+

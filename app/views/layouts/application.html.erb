@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tu Aplicación</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+<body>
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+        <% if current_user.role == "admin" %>
+          <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
+        <% else %>
+          <li><%= link_to "Productos", products_path %></li> <!-- Enlace a la página de productos -->
+          <li><%= link_to "Mis Pedidos", orders_path %></li>
+          <li><%= link_to "Carrito", cart_path %></li>
+        <% end %>
+        <li><%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Iniciar Sesión", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <%= yield %> <!-- Esto renderiza el contenido de las otras vistas -->
+</body>
+</html>

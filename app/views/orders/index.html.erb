@@ -1,0 +1,21 @@
+<h1>Mis Órdenes</h1>
+
+<% if @orders.any? %>
+  <ul>
+    <% @orders.each do |order| %>
+      <li>
+        Orden ID: <%= order.id %>
+        <ul>
+          <% order.order_items.each do |item| %>
+            <li>
+              <%= item.product.title %> - Cantidad: <%= item.quantity %> - 
+              Precio total: <%= item.price.present? ? item.price * item.quantity : 'Precio no disponible' %> $
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No tienes órdenes registradas.</p>
+<% end %>

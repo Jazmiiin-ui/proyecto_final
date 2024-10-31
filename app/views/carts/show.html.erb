@@ -1,0 +1,17 @@
+<h1>Tu Carrito</h1>
+
+<% if @cart.empty? %>
+  <p>No tienes productos en tu carrito.</p>
+<% else %>
+  <% @cart.each do |product_id, quantity| %>
+    <% product = Product.find(product_id) %>
+    <div>
+      <h2><%= product.title %></h2>
+      <p>Cantidad: <%= quantity %></p>
+      <span>Precio total: <%= product.price * quantity %> $</span>
+      <%= button_to "Eliminar", cart_remove_path(product_id: product_id), method: :delete %>
+    </div>
+  <% end %>
+
+  <%= button_to "Comprar ahora", checkout_cart_path, method: :post %>
+<% end %>
