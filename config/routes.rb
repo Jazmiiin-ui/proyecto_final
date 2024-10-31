@@ -4,11 +4,12 @@ Rails.application.routes.draw do
 
   # Rutas específicas para administradores
   namespace :admin do
+    get "dashboard/index"
     # Ruta para el dashboard del administrador
     get 'dashboard', to: 'dashboard#index'
     
     # Gestión de productos (acciones CRUD para admins)
-    resources :products
+    resources :products  # Esto incluye las rutas para crear, leer, actualizar y eliminar productos
     # Gestión de usuarios para el administrador
     resources :users
   end

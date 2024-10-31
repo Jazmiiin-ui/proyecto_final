@@ -1,0 +1,25 @@
+<h1>Panel de Administración</h1>
+
+<h2>Gestión de Productos</h2>
+<%= link_to "Agregar Producto", new_admin_product_path %>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Product.all.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.title %></td>
+        <td>
+          <%= link_to "Editar", edit_admin_product_path(product) %>
+          <%= button_to "Eliminar", admin_product_path(product), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este producto?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

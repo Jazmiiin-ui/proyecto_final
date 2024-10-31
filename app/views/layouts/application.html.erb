@@ -13,9 +13,9 @@
     <ul>
       <% if user_signed_in? %>
         <% if current_user.role == "admin" %>
-          <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
+          <li><%= link_to "CRUD", admin_dashboard_path %></li>
         <% else %>
-          <li><%= link_to "Productos", products_path %></li> <!-- Enlace a la página de productos -->
+          <li><%= link_to "Productos", products_path %></li>
           <li><%= link_to "Mis Pedidos", orders_path %></li>
           <li><%= link_to "Carrito", cart_path %></li>
         <% end %>
